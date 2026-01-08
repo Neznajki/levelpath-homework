@@ -3,14 +3,21 @@ class SearchController < ApplicationController
   def index
     WarmupService.call
 
-    q = params[:q] || ''
+    search_result = Hotel.all
 
-    search_result = Hotel.all.select{ |i| i.display_name.include? q }
+    if params[:city].present?
+      search_result = search_result.where(city: params[:city])
+    end
 
-    with_city = search_result.map do |hotel|
+    if params[:q].present?
+      search_result = search_result.where('display_name LIKE ?', "%#{params[:q]}%")
+    end
+
+    with_city = search_result.select(:id, :city, :display_name).map do |hotel|
       {
-        **hotel.attributes,
-        city: { name: hotel['city'] },
+        id: hotel.id,
+        city: { name: hotel.city },
+        display_name: hotel.display_name
       }
     end
 

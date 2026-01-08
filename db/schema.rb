@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_15_194943) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_08_090753) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "data_imports", force: :cascade do |t|
+    t.datetime "import_start"
+    t.datetime "import_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "hotels", force: :cascade do |t|
     t.string "city"
