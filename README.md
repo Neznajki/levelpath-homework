@@ -91,3 +91,5 @@ bundle exec rspec
 version: 2024-04-23
 
 
+#### working time related info
+* workspace setup project launch 1h
