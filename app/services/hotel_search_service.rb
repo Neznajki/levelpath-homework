@@ -22,7 +22,10 @@ class HotelSearchService
     hotels.includes(:city_and_town).select(:id, :city_and_town_id, :display_name).map do |hotel|
       {
         id: hotel.id,
-        city: { name: hotel.city_and_town.name },
+        city: {
+          name: hotel.city_and_town.name,
+          coat_of_arms: hotel.city_and_town.coat_of_arms
+        },
         display_name: hotel.display_name
       }
     end
