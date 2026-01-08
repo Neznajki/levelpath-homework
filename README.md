@@ -96,3 +96,5 @@ version: 2024-04-23
 * optimization done 1h 30m
 * increase some readability, optimize the table structure, add coast of arms 1h
 * force GPT to give valid links 30m
+* validate tests 30m
+* review code readability 10m

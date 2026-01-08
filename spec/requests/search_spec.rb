@@ -12,6 +12,7 @@ RSpec.describe "/search", type: :request do
     expect(request_time.to_f).to be < 0.1 # under 100ms
   end
 
+  #this expected_result is flaky I wouldn't expect that contents always would be the same. I would rather suggest checking that it contains something or mock an external source to make sure data won't change.
   let(:expected_result){
     [
       "Pils, 4B, Pils iela, Sigulda, Siguldas novads, LV-2150, Latvija",
