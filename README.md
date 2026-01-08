@@ -59,7 +59,7 @@ rails new . --api
 
 #### To start rails server, on the host system run
 ```bash
-./run.sh
+docker compose up
 ```
 
 #### To connect to running web container
