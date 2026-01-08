@@ -3,6 +3,18 @@ require 'net/http'
 
 class WarmupService
   def self.call
+    import_record = DataImport.first
+
+    if import_record
+      if import_record.import_end && import_record.import_end > 10.minutes.ago
+        return
+      end
+    else
+      import_record = DataImport.new
+    end
+
+    import_start = Time.current
+    
     cities_and_towns = %w[
       Daugavpils
       Jelgava
@@ -28,5 +40,7 @@ class WarmupService
         Hotel.create(city: city, display_name: result["display_name"])
       end
     end
+
+    import_record.update(import_start: import_start, import_end: Time.current)
   end
 end
