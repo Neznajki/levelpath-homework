@@ -94,3 +94,5 @@ version: 2024-04-23
 #### working time related info
 * workspace setup project launch 1h
 * optimization done 1h 30m
+* increase some readability, optimize the table structure, add coast of arms 1h
+* force GPT to give valid links 30m
