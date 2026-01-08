@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_08_090753) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_08_102054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities_and_towns", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_cities_and_towns_on_name", unique: true
+  end
 
   create_table "data_imports", force: :cascade do |t|
     t.datetime "import_start"
@@ -22,10 +29,12 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_08_090753) do
   end
 
   create_table "hotels", force: :cascade do |t|
-    t.string "city"
-    t.text "display_name"
+    t.text "display_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "city_and_town_id", null: false
+    t.index ["city_and_town_id"], name: "index_hotels_on_city_and_town_id"
   end
 
+  add_foreign_key "hotels", "cities_and_towns", column: "city_and_town_id"
 end

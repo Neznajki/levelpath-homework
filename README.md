@@ -32,7 +32,7 @@ Analyze and improve this application based on the requirements below.
 ### What's inside docker compose?
 
 #### Openstreetmap/Nominatim service, that runs locally
-To avoid unfair usage of public openstreetmap/nominatim API, local service is started on port 8080. 
+To avoid unfair usage of public openstreetmap/nominatim API, local service is started on port 8080.
 It is an open source nominatim app that loads all data for Latvia, so the service can be called locally.
 
 
@@ -93,3 +93,4 @@ version: 2024-04-23
 
 #### working time related info
 * workspace setup project launch 1h
+* optimization done 1h 30m
