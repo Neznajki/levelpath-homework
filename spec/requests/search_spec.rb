@@ -10,6 +10,8 @@ RSpec.describe "/search", type: :request do
     request_time = end_time - start_time
 
     expect(request_time.to_f).to be < 0.1 # under 100ms
+    parsed_response = JSON.parse(response.body)
+    expect(parsed_response.length).to be > 0
   end
 
   #this expected_result is flaky I wouldn't expect that contents always would be the same. I would rather suggest checking that it contains something or mock an external source to make sure data won't change.
@@ -30,5 +32,28 @@ RSpec.describe "/search", type: :request do
     names = parsed_response.map{|el| el["display_name"]}
 
     expect(names).to eq(expected_result)
+  end
+
+  it "it search by query" do
+    import_record = DataImport.new
+    import_record.update(import_start: Time.current, import_end: Time.current)
+    full_text = "Test Text just for search " + rand(100000).to_s
+    city_record = CityAndTown.find_or_create_by(name: "Riga")
+    Hotel.create(city_and_town: city_record, display_name: full_text)
+    get("/api/search.json", params: {q: "Test Text just for search"})
+
+    expect(response.body).to include(full_text)
+    expect(response.body).to include("{\"name\":\"Riga\",\"coat_of_arms\":\"https://upload.wikimedia.org/wikipedia/commons/9/99/Greater_Coat_of_Arms_of_Riga_-_for_display.svg\"}")
+  end
+
+  it "reimport removes outdated records" do
+    import_record = DataImport.new
+    import_record.update(import_start: Time.current - 1.hour, import_end: Time.current - 1.hour)
+    full_text = "Test Text just for search " + rand(100000).to_s
+    city_record = CityAndTown.find_or_create_by(name: "Riga")
+    Hotel.create(city_and_town: city_record, display_name: full_text)
+    get("/api/search.json", params: {q: "Test Text just for search"})
+
+    expect(response.body).to eq("[]")
   end
 end

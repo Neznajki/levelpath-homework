@@ -1,6 +1,8 @@
 class AddCoatOfArmsToCitiesAndTowns < ActiveRecord::Migration[7.1]
   def up
-    add_column :cities_and_towns, :coat_of_arms, :string
+    unless column_exists?(:cities_and_towns, :coat_of_arms)
+      add_column :cities_and_towns, :coat_of_arms, :string
+    end
 
     data = [
       {
@@ -46,7 +48,7 @@ class AddCoatOfArmsToCitiesAndTowns < ActiveRecord::Migration[7.1]
     ]
 
     data.each do |item|
-      CityAndTown.where(name: item["city"]).update_all(coat_of_arms: item["coat_of_arms"])
+      CityAndTown.where(name: item[:city]).update_all(coat_of_arms: item[:coat_of_arms])
     end
   end
 
