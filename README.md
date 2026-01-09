@@ -98,3 +98,4 @@ version: 2024-04-23
 * force GPT to give valid links 30m
 * validate tests 30m
 * review code readability 10m
+* improved tests fixed migrations 1 hour 30m
