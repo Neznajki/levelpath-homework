@@ -1,0 +1,4 @@
+warmup_job:
+  cron: "*/5 * * * *"
+  class: "WarmupJob"
+  description: "Run WarmupService every 5 minutes"

@@ -35,8 +35,6 @@ RSpec.describe "/search", type: :request do
   end
 
   it "it search by query" do
-    import_record = DataImport.new
-    import_record.update(import_start: Time.current, import_end: Time.current)
     full_text = "Test Text just for search " + rand(100000).to_s
     city_record = CityAndTown.find_or_create_by(name: "Riga")
     Hotel.create(city_and_town: city_record, display_name: full_text)
@@ -47,11 +45,10 @@ RSpec.describe "/search", type: :request do
   end
 
   it "reimport removes outdated records" do
-    import_record = DataImport.new
-    import_record.update(import_start: Time.current - 1.hour, import_end: Time.current - 1.hour)
     full_text = "Test Text just for search " + rand(100000).to_s
     city_record = CityAndTown.find_or_create_by(name: "Riga")
     Hotel.create(city_and_town: city_record, display_name: full_text)
+    WarmupService.call
     get("/api/search.json", params: {q: "Test Text just for search"})
 
     expect(response.body).to eq("[]")
