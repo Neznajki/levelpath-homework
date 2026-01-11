@@ -33,6 +33,11 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  # Run WarmupService before each test
+  config.before(:each) do
+    WarmupService.call
+  end
+
   # Log timing for each HTTP request
   config.around(:each, type: :request) do |example|
     start = Time.now
