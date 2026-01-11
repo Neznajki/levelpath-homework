@@ -33,6 +33,14 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  # Log timing for each HTTP request
+  config.around(:each, type: :request) do |example|
+    start = Time.now
+    example.run
+    duration = ((Time.now - start) * 1000).round(2)
+    puts "    ⏱️  Request completed in #{duration}ms"
+  end
+
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
