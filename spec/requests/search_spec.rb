@@ -1,19 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "/search", type: :request do
-  it "returns result under 100ms" do
-    get("/api/search.json", params: {city: "Sigulda", q: "Pils"}) # Warmup
-    start_time = Time.now
-    get("/api/search.json", params: {city: "Sigulda", q: "Pils"})
-    end_time = Time.now
-
-    request_time = end_time - start_time
-
-    expect(request_time.to_f).to be < 0.1 # under 100ms
-    parsed_response = JSON.parse(response.body)
-    expect(parsed_response.length).to be > 0
-  end
-
   #this expected_result is flaky I wouldn't expect that contents always would be the same. I would rather suggest checking that it contains something or mock an external source to make sure data won't change.
   let(:expected_result){
     [
@@ -32,6 +19,18 @@ RSpec.describe "/search", type: :request do
     names = parsed_response.map{|el| el["display_name"]}
 
     expect(names).to eq(expected_result)
+  end
+
+  it "returns result under 100ms" do
+    start_time = Time.now
+    get("/api/search.json", params: {city: "Sigulda", q: "Pils"})
+    end_time = Time.now
+
+    request_time = end_time - start_time
+
+    expect(request_time.to_f).to be < 0.1 # under 100ms
+    parsed_response = JSON.parse(response.body)
+    expect(parsed_response.length).to be > 0
   end
 
   it "it search by query" do
