@@ -11,12 +11,9 @@ class HotelImportService
   end
 
   def call
-    # Fetch all hotel data in parallel
     hotels_data = fetch_hotels_in_parallel
 
-    # Batch database operations after all data is gathered
     Hotel.delete_all # would remove if YARGNI wouldn't be part of requirements (better to mark as deleted and unmark deleted if it is imported again. to keep trace) delete_all is more optimal and we have no callback so it is better option.
-
     Hotel.insert_all(hotels_data) if hotels_data.any?
   end
 
