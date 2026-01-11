@@ -99,3 +99,4 @@ version: 2024-04-23
 * validate tests 30m
 * review code readability 10m
 * improved tests fixed migrations 1 hour 30m
+* asked agent to refactor to gather data in parallel. 20m
