@@ -103,3 +103,4 @@ version: 2024-04-23
 * asked agent to refactor to gather data in parallel. 20m
 * searching for test data deletion reason 1h
 * added soft delete 1h
+* added coverage 5m

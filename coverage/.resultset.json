@@ -1,0 +1,190 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/app/app/services/warmup_service.rb": {
+        "lines": [
+          1,
+          1,
+          5,
+          5,
+          null,
+          null
+        ]
+      },
+      "/app/app/models/city_and_town.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/app/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/app/app/services/hotel_import_service.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          5,
+          null,
+          null,
+          1,
+          5,
+          null,
+          null,
+          1,
+          5,
+          null,
+          5,
+          5,
+          5,
+          null,
+          null,
+          1,
+          null,
+          1,
+          5,
+          5,
+          null,
+          5,
+          50,
+          50,
+          null,
+          null,
+          null,
+          5,
+          5,
+          null,
+          null,
+          1,
+          50,
+          50,
+          null,
+          50,
+          null,
+          50,
+          null,
+          375,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          50,
+          50,
+          null,
+          null,
+          null
+        ]
+      },
+      "/app/app/models/hotel.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          5,
+          null
+        ]
+      },
+      "/app/app/controllers/search_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          4,
+          null,
+          null,
+          null
+        ]
+      },
+      "/app/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/app/app/services/hotel_search_service.rb": {
+        "lines": [
+          1,
+          1,
+          4,
+          null,
+          null,
+          1,
+          4,
+          4,
+          null,
+          null,
+          1,
+          4,
+          null,
+          4,
+          2,
+          null,
+          null,
+          4,
+          4,
+          null,
+          null,
+          4,
+          null,
+          9,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/app/app/channels/application_cable/channel.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/app/app/channels/application_cable/connection.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/app/app/jobs/warmup_job.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1768324052
+  }
+}
