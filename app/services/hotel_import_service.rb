@@ -13,8 +13,9 @@ class HotelImportService
   def call
     hotels_data = fetch_hotels_in_parallel
 
-    Hotel.delete_all # would remove if YARGNI wouldn't be part of requirements (better to mark as deleted and unmark deleted if it is imported again. to keep trace) delete_all is more optimal and we have no callback so it is better option.
-    Hotel.insert_all(hotels_data) if hotels_data.any?
+    Hotel.update_all(outdated: true)
+    Hotel.upsert_all(hotels_data, unique_by: :index_hotels_on_city_and_town_id_and_display_name) if hotels_data.any?
+    Hotel.where(outdated: true).update_all(display: false)
   end
 
   private
@@ -35,7 +36,9 @@ class HotelImportService
             city_and_town_id: city_record.id,
             display_name: result["display_name"],
             created_at: Time.current,
-            updated_at: Time.current
+            updated_at: Time.current,
+            outdated: false,
+            display: true
           }
         end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2026_01_11_000000) do
+ActiveRecord::Schema[7.1].define(version: 2026_01_13_163615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,7 +27,11 @@ ActiveRecord::Schema[7.1].define(version: 2026_01_11_000000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "city_and_town_id", null: false
+    t.boolean "outdated", default: false, null: false
+    t.boolean "display", default: true, null: false
+    t.index ["city_and_town_id", "display_name"], name: "index_hotels_on_city_and_town_id_and_display_name", unique: true
     t.index ["city_and_town_id"], name: "index_hotels_on_city_and_town_id"
+    t.index ["display"], name: "index_hotels_on_display"
   end
 
   add_foreign_key "hotels", "cities_and_towns", column: "city_and_town_id"

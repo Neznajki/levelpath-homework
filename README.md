@@ -75,6 +75,7 @@ bundle exec rake db:create
 For development environment, run migrations
 ```bash
 bundle exec rake db:migrate
+bundle exec rake db:migrate RAILS_ENV=test
 ```
 
 #### Run tests

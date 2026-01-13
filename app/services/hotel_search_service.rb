@@ -9,7 +9,7 @@ class HotelSearchService
   end
 
   def call
-    hotels = Hotel.all
+    hotels = Hotel.visible
 
     if @city.present?
       hotels = hotels.joins(:city_and_town).where(cities_and_towns: { name: @city })
