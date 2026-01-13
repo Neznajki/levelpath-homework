@@ -43,7 +43,7 @@ RSpec.describe "/search", type: :request do
     expect(response.body).to include("{\"name\":\"Riga\",\"coat_of_arms\":\"https://upload.wikimedia.org/wikipedia/commons/9/99/Greater_Coat_of_Arms_of_Riga_-_for_display.svg\"}")
   end
 
-  it "reimport removes outdated records" do
+  it "reimport soft removes outdated records" do
     full_text = "Test Text just for search " + rand(100000).to_s
     city_record = CityAndTown.find_or_create_by(name: "Riga")
     Hotel.create(city_and_town: city_record, display_name: full_text)
@@ -51,5 +51,11 @@ RSpec.describe "/search", type: :request do
     get("/api/search.json", params: {q: "Test Text just for search"})
 
     expect(response.body).to eq("[]")
+
+    hotels = Hotel.where(display: false)
+    assert_equal 1, hotels.count
+
+    assert_equal full_text, hotels[0].display_name
+    assert_equal city_record, hotels[0].city_and_town
   end
 end
