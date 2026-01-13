@@ -104,3 +104,4 @@ version: 2024-04-23
 * searching for test data deletion reason 1h
 * added soft delete 1h
 * added coverage 5m
+* make 100% coverage 10m

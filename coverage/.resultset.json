@@ -1,12 +1,39 @@
 {
   "RSpec": {
     "coverage": {
+      "/app/app/channels/application_cable/channel.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/app/app/channels/application_cable/connection.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/app/app/jobs/warmup_job.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
       "/app/app/services/warmup_service.rb": {
         "lines": [
           1,
           1,
-          5,
-          5,
+          10,
+          10,
           null,
           null
         ]
@@ -34,55 +61,55 @@
           null,
           1,
           1,
-          5,
+          10,
           null,
           null,
           1,
-          5,
+          10,
           null,
           null,
           1,
-          5,
+          10,
           null,
-          5,
-          5,
-          5,
-          null,
-          null,
-          1,
-          null,
-          1,
-          5,
-          5,
-          null,
-          5,
-          50,
-          50,
-          null,
-          null,
-          null,
-          5,
-          5,
+          10,
+          10,
+          10,
           null,
           null,
           1,
-          50,
-          50,
           null,
-          50,
+          1,
+          10,
+          10,
           null,
-          50,
-          null,
-          375,
-          null,
-          null,
+          10,
+          100,
+          100,
           null,
           null,
           null,
+          10,
+          10,
           null,
           null,
-          50,
-          50,
+          1,
+          100,
+          100,
+          null,
+          100,
+          null,
+          100,
+          null,
+          750,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          100,
+          100,
           null,
           null,
           null
@@ -150,41 +177,8 @@
           null,
           null
         ]
-      },
-      "/app/app/channels/application_cable/channel.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/app/app/channels/application_cable/connection.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/app/app/jobs/warmup_job.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1768324052
+    "timestamp": 1768324608
   }
 }
